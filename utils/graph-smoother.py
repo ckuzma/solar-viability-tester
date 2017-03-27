@@ -29,6 +29,8 @@ class GraphSmoother:
         return smooth_points
 
 if __name__ == '__main__':
+    print('Running tests for: graph-smoother.py')
+
     ## Instantiate the class
     smoother = GraphSmoother()
 

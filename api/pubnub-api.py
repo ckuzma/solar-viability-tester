@@ -31,6 +31,8 @@ class PubNubApi:
         self.pubnub.subscribe().channels(channel).execute()
 
 if __name__ == '__main__':
+    print('Running tests for: pubnub-api.py')
+
     import json
     import sys
 
