@@ -1,1 +1,6 @@
+## System files
+.DS_STORE
+__pycache__/
+
+## Our creds:
 creds.json

@@ -1,11 +1,18 @@
+## Import blackboxes
 from pubnub.callbacks import SubscribeCallback
 from pubnub.enums import PNOperationType, PNStatusCategory
 from pubnub.pnconfiguration import PNConfiguration
 from pubnub.pubnub import PubNub, NonSubscribeListener
 
+## Import our stuff
+from utils.datawriter import DataWriter
+
 listener = NonSubscribeListener()
 
 class MySubscribeCallback(SubscribeCallback):
+    def __init__(self):
+        self.log = DataWriter()
+
     def status(self, pubnub, status): # handle status changes
         pass
 
@@ -13,6 +20,7 @@ class MySubscribeCallback(SubscribeCallback):
         pass
 
     def message(self, pubnub, message): # handle incoming messages
+        self.log.write_solar_info(message.message)
         print(message.message)
 
 class PubNubApi:
@@ -46,7 +54,7 @@ if __name__ == '__main__':
 
     ## Set the tests to run
     publish_test = False
-    listen_test = True
+    listen_test = False
 
     ## Test functions
     if publish_test:
