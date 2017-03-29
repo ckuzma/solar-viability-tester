@@ -1,0 +1,6 @@
+data/srand_from_pubnub_time.h.i
+data/pubnub_sync.h.i
+data/Pubnub_c_core_mbed2_pal.lib.i
+data/pubnub_ntf_sync.cpp.i
+data/srand_from_pubnub_time.cpp.i
+data/pubnub_ntf_sync.h.i
