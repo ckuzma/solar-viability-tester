@@ -1,3 +1,2 @@
-cf-deployment-tracker>=0.0.0
-flask-restful>=0.0.0
-pubnub>=4.0.9
+flask>=0.12.1
+pubnub>=4.0.10

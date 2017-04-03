@@ -1,9 +1,0 @@
-applications:
-- path: .
-  memory: 128M
-  instances: 1
-  domain: mybluemix.net
-  name: solar-viability-tester
-  host: solar-viability-tester
-  disk_quota: 256M
-  buildpack: python_buildpack
