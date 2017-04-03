@@ -1,4 +1,0 @@
-[ui]
-ignore.local = .hg/hgignore
-[paths]
-default = http://developer.mbed.org/users/sveljko/code/Pubnub_ATT_IoT_SK_WNC_sync/

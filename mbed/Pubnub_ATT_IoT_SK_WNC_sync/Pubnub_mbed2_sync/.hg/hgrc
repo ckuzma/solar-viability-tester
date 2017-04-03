@@ -1,4 +1,0 @@
-[ui]
-ignore.local = .hg/hgignore
-[paths]
-default = https://developer.mbed.org/users/sveljko/code/Pubnub_mbed2_sync/

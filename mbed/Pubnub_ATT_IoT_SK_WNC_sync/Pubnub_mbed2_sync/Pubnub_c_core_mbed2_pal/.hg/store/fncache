@@ -1,8 +1,0 @@
-data/pbpal_mutex.h.i
-data/pubnub_internal.h.i
-data/pbpal_mbed2_blocking_io.cpp.i
-data/Pubnub_c_core.lib.i
-data/pubnub_version_mbed.cpp.i
-data/pbpal_resolv_and_connect_mbed2.cpp.i
-data/pbpal_sockets.cpp.i
-data/pubnub_generate_uuid_v4_random_std.cpp.i
