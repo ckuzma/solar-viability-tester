@@ -21,6 +21,7 @@ MODSERIAL pc(USBTX,USBRX,256,256);
 
 int main()
 {
+  while (true) { // Endless loop
     // Connect to serial, modem
     pc.baud(115200);
     pc.printf(CRLF CRLF "Solar viability tester warming up..." CRLF);
@@ -35,13 +36,14 @@ int main()
     srand_from_pubnub_time(pbp);
     generate_uuid(pbp);
 
-    while (true) { // Endless loop
-        char *powerMessage = "{\"power_type\":\"default\"}";
-        publishMessage(pbp, channel, powerMessage);
+    // Assemble the message
+    char *powerMessage = "{\"power_type\":\"default\"}";
+    publishMessage(pbp, channel, powerMessage);
 
-        pc.printf(CRLF"Sleeping for %d seconds..."CRLF, timeDelay);
-        wait(timeDelay);
-    }
+    // Go to sleep
+    pc.printf(CRLF"Sleeping for %d seconds..."CRLF, timeDelay);
+    wait(timeDelay);
+  }
 }
 
 void generate_uuid(pubnub_t *pbp)
