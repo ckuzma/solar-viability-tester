@@ -92,8 +92,9 @@ class SolarViability:
             calculations have to divide everything by 6 before multiplying
             the solar panel's Watts / Amps rating.
             """
-            mWh = str((1.0/6.0) * value * PANEL_WATTS)
-            mAh = str((1.0/6.0) * value * PANEL_AMPS)
+
+            mWh = "{0:.2f}".format((1.0/6.0) * value * PANEL_WATTS)
+            mAh = "{0:.2f}".format((1.0/6.0) * value * PANEL_AMPS)
             power_per_day.append(key + ' = ' + mWh + ' wH / ' + mAh + ' aH')
         return '\n<br>\n'.join(power_per_day)
 
