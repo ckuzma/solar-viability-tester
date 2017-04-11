@@ -1,12 +1,13 @@
 import cf_deployment_tracker
+import datetime
 import json
 import os
+import time
 
 from flask import Flask
 from pubnub.callbacks import SubscribeCallback
 from pubnub.pnconfiguration import PNConfiguration
 from pubnub.pubnub import PubNub
-from time import localtime, strftime
 
 # Bluemix requires an emit here
 cf_deployment_tracker.track()
@@ -40,7 +41,7 @@ class SolarViability:
         x[0] = date
         x[1] = time
         """
-        timestamp = strftime("%Y-%m-%d %H:%M:%S", localtime())
+        timestamp = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
         return timestamp.split(' ')
 
     def save_to_csv(self, data_string):
@@ -75,11 +76,13 @@ class SolarViability:
 
         data = data.split('\n')
         day_power = {}
+        last_update = None
         x = 0
         while x < len(data):
             csv_line = data[x]
             csv_line = csv_line.split(',')
             if len(csv_line) == 3:
+                last_update = csv_line[0] + ' @ ' + csv_line[1]
                 if csv_line[0] in day_power:
                     day_power[csv_line[0]] += 1
                 else:
@@ -96,7 +99,8 @@ class SolarViability:
             mWh = "{0:.2f}".format((1.0/6.0) * value * PANEL_WATTS)
             mAh = "{0:.2f}".format((1.0/6.0) * value * PANEL_AMPS)
             power_per_day.append(key + ' = ' + mWh + ' wH / ' + mAh + ' aH')
-        return '\n<br>\n'.join(power_per_day)
+        power_per_day = sorted(power_per_day, key=lambda x: datetime.datetime.strptime(x[0:10], "%Y-%m-%d"), reverse=True)
+        return '\n<br>\n'.join(power_per_day), last_update
 
 
 app = Flask(__name__)
@@ -118,13 +122,12 @@ def root():
     information, see the <a href=\"https://www.hackster.io/kuzma/solar-viability-tester-6cb5f1\">project page on
     <br>
     Hackster</a> or the <a href=\"https://github.com/ckuzma/solar-viability-tester\">GitHub repo</a>.
-    </p>
-    <p>
-    Results updated every 10 minutes.
     </p></h3>
     """
-    results = '<p>' + solar.get_power_per_day() + '</p>'
-    return page_html + results + HTML_FOOTER
+    power_per_day, last_ping = solar.get_power_per_day()
+    last_ping = '<p><b>Last received ping:</b><br>' + last_ping + ' EST</p>'
+    results = '<p><b>Power generated per day:</b><br>' + power_per_day + '</p>'
+    return page_html + last_ping + results + HTML_FOOTER
 
 if __name__ == '__main__':
     ## Initialize pubnub
