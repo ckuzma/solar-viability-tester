@@ -5,14 +5,14 @@
 ## Introduction
 This repo holds the code for Chris Kuzma's [project submission](https://www.hackster.io/kuzma/solar-viability-tester-6cb5f1) for the [Realtime AT&T IoT StarterKit challenge](https://www.hackster.io/contests/RealtimeAT&TIoTStarterKit) contest hosted by [Hackster.io](https://www.hackster.io/) and [AT&T](https://www.att.com/). The goal of the project is to build a wireless, self-powered and contained, cloud-enabled test for determining the viability of a permanent solar cell array installation for a given site.
 
-## Live Results (Last Updated 4/10/2017)
-Live results from an installation in New York City can be found here:
+## Live Results (Last Updated 4/29/2017)
+Archived results from an installation in New York City can be found here:
 
-[Solar Viability Tester - Live](https://solar-viability-tester.mybluemix.net/)
+[Solar Viability Tester - Archived Results](https://github.com/ckuzma/solar-viability-tester/blob/master/data.csv)
 
 If it's cloudy outside, then there isn't enough power to keep both the modem and the NXP board turned on. Instead they just power cycle again and again repeatedly like so:
 
-![Power cycling board](https://github.com/ckuzma/solar-viability-tester/blob/master/photos/k64f_power_flash.gif)
+![Power cycling board](https://github.com/ckuzma/solar-viability-tester/blob/master/photos/k64f_power_flash.gifbluemi)
 
 ## Hardware
 ### [NXP FRDM-K64F MCU](https://developer.mbed.org/platforms/FRDM-K64F/)
