@@ -12,7 +12,7 @@ Archived results from an installation in New York City can be found here:
 
 If it's cloudy outside, then there isn't enough power to keep both the modem and the NXP board turned on. Instead they just power cycle again and again repeatedly like so:
 
-![Power cycling board](https://github.com/ckuzma/solar-viability-tester/blob/master/photos/k64f_power_flash.gifbluemi)
+![Power cycling board](https://github.com/ckuzma/solar-viability-tester/blob/master/photos/k64f_power_flash.gif)
 
 ## Hardware
 ### [NXP FRDM-K64F MCU](https://developer.mbed.org/platforms/FRDM-K64F/)
